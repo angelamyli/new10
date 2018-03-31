@@ -30,7 +30,7 @@ with open(FLAGS.reverse_dictionary, encoding='utf-8') as inf:
     reverse_dictionary = json.load(inf, encoding='utf-8')
 
 
-model = Model(learning_rate=FLAGS.learning_rate, batch_size=FLAGS.batch_size, num_steps=FLAGS.num_steps)
+model = Model(learning_rate=FLAGS.learning_rate, batch_size=FLAGS.batch_size, num_steps=FLAGS.num_steps, embedding_file=FLAGS.embedding_file)
 model.build()
 
 
@@ -65,7 +65,7 @@ with tf.Session() as sess:
             # feed_dict={model.X=index_x, model.Y=index_y, model.keep_prob=0.9, model.state_tensor=state}
             feed_dict[model.X] = index_x
             feed_dict[model.Y] = index_y
-            feed_dict[model.keep_prob] = 0.5
+            feed_dict[model.keep_prob] = 0.8
             feed_dict[model.state_tensor] = state
 
             ########################## This is the bottom line of my code ############################################

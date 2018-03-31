@@ -6,13 +6,14 @@ import tensorflow as tf
 
 
 class Model():
-    def __init__(self, learning_rate=0.001, batch_size=16, num_steps=32, num_words=5000, dim_embedding=128, rnn_layers=3):
+    def __init__(self, learning_rate=0.001, batch_size=16, num_steps=32, num_words=5000, dim_embedding=128, rnn_layers=3, embedding_file=None):
         self.batch_size = batch_size
         self.num_steps = num_steps
         self.num_words = num_words     # vocabulary size
         self.dim_embedding = dim_embedding   # hidden size which equals to
         self.rnn_layers = rnn_layers   # lstm layers which is the number of lstm_cells
         self.learning_rate = learning_rate
+        self.embedding_file = embedding_file
 
     def build(self, embedding_file=None):
         # global step

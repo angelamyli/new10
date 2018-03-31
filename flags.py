@@ -33,6 +33,9 @@ def parse_args(check=True):
     parser.add_argument('--learning_rate', type=float, default=0.001,
                         help='learning rate')
 
+    parser.add_argument('--embedding_file', type=str, default='embedding.npy',
+                        help='embedding_file')
+
     FLAGS, unparsed = parser.parse_known_args()
 
     return FLAGS, unparsed
