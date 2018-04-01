@@ -15,7 +15,7 @@ class Model():
         self.learning_rate = learning_rate
         self.embedding_file = embedding_file
 
-    def build(self, embedding_file=None):
+    def build(self):
         # global step
         self.global_step = tf.Variable(
             0, trainable=False, name='self.global_step', dtype=tf.int64)
@@ -28,9 +28,9 @@ class Model():
         self.keep_prob = tf.placeholder(tf.float32, name='self.keep_prob')
 
         with tf.variable_scope('embedding'):
-            if embedding_file:
+            if self.embedding_file:
                 # if embedding file provided, use it.
-                embedding = np.load(embedding_file)
+                embedding = np.load(self.embedding_file)
                 embed = tf.constant(embedding, name='embedding')
             else:
                 # if not, initialize an embedding and train it.
